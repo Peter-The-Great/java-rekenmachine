@@ -29,7 +29,11 @@ public class Calculator extends Application {
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.setResizable(false);
         stage.setTitle("Rekenmachine");
+
+        //Hier wordt de icon geladen.
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("images/logo.png"))));
+
+        //Hier wordt de controller geinitialiseerd.
         ((CalculatorController)fxmlLoader.getController()).init(stage);
         stage.show();
     }
