@@ -1,0 +1,19 @@
+.root {
+    -fx-background-color: #000000;
+    -fx-background-radius: 28;
+}
+
+@font-face {
+    font-family: "Digital-7";
+    src: url("digital-7.ttf");
+}
+
+.mainPane {
+    -fx-background-color: linear-gradient(to right, #16bffd, #cb3066);
+    -fx-background-radius: 15 15 25 25;
+}
+.highlight {
+    -fx-background-color: #00000025;
+    -fx-background-radius: 15;
+    -fx-text-fill: #000000;
+}
