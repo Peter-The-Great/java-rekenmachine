@@ -45,20 +45,20 @@ public class CalculatorController {
     }
 
     /**
-     * @onNumberClicked
+     * @kliknummer
      * Bij deze functie wordt de waarde van de knop omgezet naar een int.
      * Daarna wordt er gekeken of de waarde van lblResult gelijk is aan 0.
      * Als dit zo is wordt de waarde van lblResult gelijk gesteld aan de waarde van de knop.
      * Als dit niet zo is wordt de waarde van lblResult gelijk gesteld aan de waarde van lblResult * 10 + de waarde van de knop.
      */
     @FXML
-    void onNumberClicked(MouseEvent event) {
+    void kliknummer(MouseEvent event) {
         int value = Integer.parseInt(((Pane)event.getSource()).getId().replace("btn",""));
         lblResult.setText(Double.parseDouble(lblResult.getText())==0 ? String.valueOf((double)value) : String.valueOf(Double.parseDouble(lblResult.getText()) * 10 + value));
     }
 
     /**
-     * @onSymbolClicked
+     * @kliksymbol
      * Bij deze functie wordt de waarde van de knop omgezet naar een String.
      * Daarna wordt er gekeken of de waarde van de knop gelijk is aan "Equals".
      * Als dit zo is wordt er gekeken welke operator er is gebruikt.
@@ -67,7 +67,7 @@ public class CalculatorController {
      * Als dit niet zo is wordt de waarde van lblResult gelijk gesteld aan de waarde van num1 - de waarde van lblResult.
      */
     @FXML
-    void onSymbolClicked(MouseEvent event) {
+    void kliksymbol(MouseEvent event) {
         String symbol = ((Pane)event.getSource()).getId().replace("btn","");
         if(symbol.equals("Equals")) {
             // Doe hem in double want dat is wat makkelijker dan met een int te werken.
