@@ -25,6 +25,10 @@ public class Calculator extends Application {
           Dit is de icon die in de taskbar van Windows te zien is.
          */
         scene.setFill(Color.TRANSPARENT);
+
+        //Hier zet ik de keylistener aan.
+        //Dit zorgt ervoor dat je de knoppen op je toetsenbord kan gebruiken.
+        scene.setOnKeyPressed(keyEvent -> ((CalculatorController)fxmlLoader.getController()).handleKeyEvent(keyEvent.getCode()));
         stage.setScene(scene);
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.setResizable(false);

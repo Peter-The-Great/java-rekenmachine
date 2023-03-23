@@ -3,6 +3,7 @@ package com.pjotr.calculator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -42,6 +43,22 @@ public class CalculatorController {
 
         btnClose.setOnMouseClicked(mouseEvent -> stage.close());
         btnMinimize.setOnMouseClicked(mouseEvent -> stage.setIconified(true));
+    }
+    
+    public void handleKeyEvent(KeyCode code) {
+        switch (code) {
+            case DIGIT0:
+            case NUMPAD0:
+                // Handle 0 key press
+                break;
+            case DIGIT1:
+            case NUMPAD1:
+                // Handle 1 key press
+                break;
+            // Add more cases for other keys
+            default:
+                break;
+        }
     }
 
     /**
