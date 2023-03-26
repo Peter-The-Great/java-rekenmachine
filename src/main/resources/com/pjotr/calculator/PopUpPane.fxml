@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="399.0" prefWidth="614.0" style="-fx-background-color: black;" stylesheets="@calculator.css"
+            xmlns="http://javafx.com/javafx/19">
+   <TextArea editable="false" layoutX="6.0" layoutY="55.0" prefHeight="330.0" prefWidth="602.0" text="Product Version&#10;Wetenschappelijke Rekenmachine 1.5.0&#10;&#10;Gemaakt door&#10;Pjotr Wisse&#10;&#10;Build Informatie&#10;Version 1.5.0&#10;Date: 2023-03-27&#10;java 19.0.1 2022-10-18&#10;Java(TM) SE Runtime Environment (build 19.0.1+10-21)&#10;Java HotSpot(TM) 64-Bit Server VM (build 19.0.1+10-21, mixed mode, sharing)&#10;&#10;Apache License 2.0&#10;Copyright (c) HHS 2023">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </TextArea>
+   <ImageView fitHeight="58.0" fitWidth="51.0" layoutX="156.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/icon.png" />
+   </ImageView>
+   <Label alignment="CENTER" layoutX="196.0" layoutY="6.0" prefHeight="43.0" prefWidth="239.0" text="RekenMachine">
+      <font>
+         <Font name="MT Extra" size="30.0" />
+      </font>
+      <textFill>
+         <RadialGradient centerX="0.45555555555555555" centerY="0.7523809523809524" focusAngle="-77.01" radius="0.5232558139534884">
+            <stops>
+               <Stop>
+                  <color>
+                     <Color red="0.4066425859928131" blue="0.8799999952316284" />
+                  </color>
+               </Stop>
+               <Stop offset="1.0">
+                  <color>
+                     <Color red="0.04313725605607033" green="0.6784313917160034" blue="0.8784313797950745" />
+                  </color>
+               </Stop>
+            </stops>
+         </RadialGradient>
+      </textFill>
+   </Label>
+</AnchorPane>

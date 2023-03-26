@@ -1,48 +1,101 @@
 package com.pjotr.calculator;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
-import javafx.stage.StageStyle;
-import java.io.IOException;
-import java.util.Objects;
+public class Calculator extends CalculatorOperation {
 
-public class Calculator extends Application {
-    @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Calculator.class.getResource("calculator.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+    String mem;
+    public Calculator(String ConsoleValue, char measureSystem)
+    {
+        system=measureSystem;
+        int start = 0, end = 0;
+        ConsoleValue=Reformat(ConsoleValue);
+        mem=ConsoleValue;
+        ConsoleValue=ConsoleValue.replace("√","r");
+        ConsoleValue=ConsoleValue.replace("asin","s");
+        ConsoleValue=ConsoleValue.replace("acos","c");
+        ConsoleValue=ConsoleValue.replace("atan","t");
+        ConsoleValue=ConsoleValue.replace("sin","S");
+        ConsoleValue=ConsoleValue.replace("cos","C");
+        ConsoleValue=ConsoleValue.replace("tan","T");
+        ConsoleValue=ConsoleValue.replace("log","L");
+        ConsoleValue=ConsoleValue.replace("ln","l");
+        ConsoleValue=Reorganized(ConsoleValue);
+        System.out.println(ConsoleValue);
+        while (ConsoleValue.contains("(") || ConsoleValue.contains(")"))
+        {
+            for (int i = 0; i < ConsoleValue.length(); i++)
+            {
+                if (ConsoleValue.charAt(i) == '(')
+                    start = i;
+                if (ConsoleValue.charAt(i) == ')') {
+                    end = i;
+                    break;
+                }
+            }
+            String x = ConsoleValue.substring(start, end + 1);
+            Operation(ConsoleValue.substring(start + 1, end));
+            if (start != 0 && Character.isDigit(ConsoleValue.charAt(start - 1)))
+                ConsoleValue = ConsoleValue.replace(x, "*" + findAnswers());
+            else if (start != 0 && ConsoleValue.charAt(start - 1) == '-') {
+                String y = ConsoleValue.substring(start - 1, end + 1);
+                ConsoleValue = ConsoleValue.replace(y, -1 + "*" + findAnswers());
+            } else if (start != 0 && ConsoleValue.charAt(start - 1) == '*')
+                ConsoleValue = ConsoleValue.replace(x, String.valueOf(findAnswers()));
+            else
 
-        /*
-          Deze code zorgt ervoor dat de achtergrond van de stage transparant is.
-          Dit is nodig om de achtergrond van de stage te kunnen veranderen.
-          De achtergrond van de stage wordt veranderd in de CSS.
-          De CSS wordt geladen in de FXML file.
-          We pakken daarna ook de logo.png uit de resources map.
-          Dit is de icon die in de taskbar van Windows te zien is.
-         */
-        scene.setFill(Color.TRANSPARENT);
-
-        //Hier zet ik de keylistener aan.
-        //Dit zorgt ervoor dat je de knoppen op je toetsenbord kan gebruiken.
-        scene.setOnKeyPressed(keyEvent -> ((CalculatorController)fxmlLoader.getController()).handleKeyEvent(keyEvent.getCode()));
-        stage.setScene(scene);
-        stage.initStyle(StageStyle.TRANSPARENT);
-        stage.setResizable(false);
-        stage.setTitle("Rekenmachine");
-
-        //Hier wordt de icon geladen.
-        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("images/logo.png"))));
-
-        //Hier wordt de controller geinitialiseerd.
-        ((CalculatorController)fxmlLoader.getController()).init(stage);
-        stage.show();
+                ConsoleValue = ConsoleValue.replace(x, String.valueOf(findAnswers()));
+            System.out.println(ConsoleValue);
+        }
+        Operation(ConsoleValue);
     }
 
-    public static void main(String[] args) {
-        launch();
+    public Double findAnswers() {
+        power();
+        division();
+        multiplication();
+        AdditionAndSubtraction();
+        return FinalValue;
+    }
+    String Reformat(String co)
+    {
+        int c1=0,c2=0;
+        for (int i=0;i<co.length();i++){
+            if (co.charAt(i)=='(')
+                c1++;
+            if (co.charAt(i)==')')
+                c2++;
+        }
+        if ((c1-c2)>0){
+            co = co + ")".repeat(Math.max(0, (c1 - c2)));
+        }
+        if ((c1-c2)<0){
+            co=co.substring(0,(co.length()-(c2-c1)));
+        }
+        return co;
+    }
+    String Reorganized(String str){
+        StringBuilder tem= new StringBuilder();
+        for (int i=0;i<str.length();i++)
+        {
+            if ((i!=0)&&(str.charAt(i)=='S'||str.charAt(i)=='s'||
+                    str.charAt(i)=='C'||str.charAt(i)=='c'||
+                    str.charAt(i)=='T'||str.charAt(i)=='t'||
+                    str.charAt(i)=='L'|| str.charAt(i)=='l'
+                    ||str.charAt(i)=='e'||str.charAt(i)=='π'||str.charAt(i)=='r')
+                    &&(Character.isDigit(str.charAt(i-1))||str.charAt(i-1)==')'))
+            {
+                    tem.append("*").append(str.charAt(i));
+            }
+            else if((i!=0&&Character.isDigit(str.charAt(i))&&str.charAt(i-1)==')')||
+                    (i!=0&&Character.isDigit(str.charAt(i))&&
+                            ((str.charAt(i-1)=='π')||(str.charAt(i-1)=='e')||(str.charAt(i-1)=='!')))){
+                tem.append("*").append(str.charAt(i));
+            }
+            else if ((i!=0&&str.charAt(i)=='e'&&str.charAt(i-1)=='π')||((i!=0&&str.charAt(i)=='π'&&str.charAt(i-1)=='e')))
+                tem.append("*").append(str.charAt(i));
+            else if ((i!=0&&str.charAt(i)=='π'&&str.charAt(i-1)=='π')||((i!=0&&str.charAt(i)=='e'&&str.charAt(i-1)=='e')))
+                tem.append("*").append(str.charAt(i));
+            else tem.append(str.charAt(i));
+        }
+        return tem.toString();
     }
 }
