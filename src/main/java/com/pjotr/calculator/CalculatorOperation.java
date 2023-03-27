@@ -1,7 +1,7 @@
 package com.pjotr.calculator;
 import java.util.ArrayList;
 
-class CalculatorOperation {
+public class CalculatorOperation {
     int sign, finalSign;
     Double FinalValue = 0.0;
     ArrayList<Double> Memory = new ArrayList<>();
@@ -11,7 +11,7 @@ class CalculatorOperation {
     String tem = "";
     char system;
 
-    void Operation(String ConsoleValue) {
+    public void Operation(String ConsoleValue) {
         Memory.clear();
         divisionOperator.clear();
         multiplicationOperator.clear();
@@ -104,7 +104,7 @@ class CalculatorOperation {
         }
     }
 
-    void power() {
+    public void power() {
         for (int j = 0; j < powerOperator.size(); j++) {
             Memory.set(powerOperator.get(j), Math.pow(Memory.get(powerOperator.get(j)), (Memory.get(powerOperator.get(j) + 1))));
             Memory.remove(powerOperator.get(j) + 1);
@@ -115,7 +115,7 @@ class CalculatorOperation {
     }
 
     //for division
-    void division() {
+    public void division() {
         for (int i = 0; i < divisionOperator.size(); i++) {
             Memory.set(divisionOperator.get(i), Memory.get(divisionOperator.get(i)) / Memory.get(divisionOperator.get(i) + 1));
             Memory.remove(divisionOperator.get(i) + 1);
@@ -125,7 +125,7 @@ class CalculatorOperation {
     }
 
     //for multiplication
-    void multiplication() {
+    public void multiplication() {
         for (int j = 0; j < multiplicationOperator.size(); j++) {
             Memory.set(multiplicationOperator.get(j), Memory.get(multiplicationOperator.get(j)) * Memory.get(multiplicationOperator.get(j) + 1));
             Memory.remove(multiplicationOperator.get(j) + 1);
@@ -134,11 +134,11 @@ class CalculatorOperation {
     }
 
     // voor optellen en aftrekken
-    void AdditionAndSubtraction() {
+    public void AdditionAndSubtraction() {
         for (Double aDouble : Memory) FinalValue = FinalValue + aDouble;
     }
 
-    ArrayList<Integer> sizeReducer(ArrayList<Integer> memoryList1, ArrayList<Integer> memoryList2, int a) {
+    public ArrayList<Integer> sizeReducer(ArrayList<Integer> memoryList1, ArrayList<Integer> memoryList2, int a) {
         for (int b = 0; b < memoryList1.size(); b++) {
             if ((memoryList2.get(a)) < memoryList1.get(b))
                 memoryList1.set(b, (memoryList1.get(b) - 1));
@@ -147,7 +147,7 @@ class CalculatorOperation {
     }
 
     //For maths function
-    int function(int i, char type, String Data) {
+    public int function(int i, char type, String Data) {
         i = i + 1;
         tem = "";
         finalSign = sign;
@@ -210,7 +210,7 @@ class CalculatorOperation {
     }
 
     // for  finding factorial
-    double factorial(double n) {
+    public double factorial(double n) {
         double f = 1;
         for (int i = 1; i <= n; i++)
             f = f * i;
