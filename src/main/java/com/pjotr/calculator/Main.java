@@ -13,10 +13,11 @@ public class Main extends Application {
     // Hier worden de variabelen gedeclareerd.
     // Deze variabelen zijn static, zodat ze in andere klassen kunnen worden aangeroepen.
 
-    // De eerste is een stage, deze wordt gebruikt om de applicatie te tonen.
+    /** @stage De eerste is een stage, deze wordt gebruikt om de applicatie te tonen. */
     static Stage stage;
 
-    //Dit is een AnchorPane, dit is een paneel waarin andere elementen kunnen worden geplaatst.
+    /** @parent Dit is een AnchorPane, dit is een paneel waarin de belangrijke elementen kunnen worden geplaatst. */
+    /** @pop Dit is een AnchorPane, dit is een paneel waarin een informatie panneel geplaats wordt. */
     static AnchorPane parent, pop;
 
     //Dit is een scene, deze wordt gebruikt om de AnchorPane te tonen.

@@ -3,6 +3,12 @@ package com.pjotr.calculator;
 public class Rational
 {
     private long a, b,pos=0,l=0;
+    /**
+     * @Rational
+     * Deze functie zet een String om naar een breuk. Deze functie wordt gebruikt in de {@link com.pjotr.calculator.Calculator #Calculator() Calculator} class.
+     * De functie is nodig om de String om te zetten naar een breuk, zodat deze kan worden vergeleken met andere breuken.
+     * @param String input
+     */
     Rational(String input){
         StringBuilder num=new StringBuilder();
         if (!input.contains("."))
@@ -21,10 +27,26 @@ public class Rational
         a = Long.parseLong(num.toString());
         b = (long) Math.pow(10, l - pos);
     }
+    /**
+     * @P_by_QForm
+     * Deze functie voegt 2 breuken bij elkaar en geeft het resultaat terug.
+     * Met behulp van de {@link #GCD(long a, long b) GCD} wordt de breuk vereenvoudigd naar een eenvoudige breuk.
+     * @param Rational r
+     * @return The sum of the 2 fractions
+     */
     public String P_by_QForm() {
-        return a / Hcf(a, b) + "/" + b / Hcf(a, b);
+        return a / GCD(a, b) + "/" + b / GCD(a, b);
     }
-    private long Hcf(long a, long b) {
+    /**
+     * @GCD
+     * Deze functie berekent de grootste gemene deler van 2 getallen a en b,
+     * hiermee wordt een breuk vereenvoudigd naar een eenvoudige breuk.
+     * Dit is handig voor het vergelijken van breuken.
+     * @param a
+     * @param b
+     * @return The Greatest common divisor
+     */
+    private long GCD(long a, long b) {
         long gdc = 0, count = 0;
         for (long i = 1; i <= Math.max(a, b); i++) {
             if (a % i == 0 && b % i == 0) {

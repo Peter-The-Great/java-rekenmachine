@@ -26,7 +26,7 @@ public class Controller implements Initializable {
     @FXML
     CheckMenuItem len;
     @FXML
-    RadioMenuItem converter_item,scientific_item,standard_item;
+    RadioMenuItem scientific_item,standard_item;
     @FXML
     public void numbers(ActionEvent actionEvent) {
         Button button = (Button) actionEvent.getSource();
@@ -224,19 +224,29 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     * @initializeRadioItems Dit is een methode die de radio items initialiseerd, om zo null errors te voorkomen.
+     */
+    public void initializeRadioItems(){
+        standard_item = new RadioMenuItem("Standard");
+        standard_item.setSelected(true);
+        scientific_item = new RadioMenuItem("Scientific");
+        scientific_item.setSelected(false);
+    }
     @FXML
     protected void Enable(ActionEvent actionEvent) {
         number = " ";
+        initializeRadioItems();
         if (((RadioButton) actionEvent.getSource()).getText().equals("Scientific")) {
             Standard.setSelected(false);
-            standard_item.setSelected(false);
             scientific_item.setSelected(true);
+            standard_item.setSelected(false);
             Select();
         }
         if (((RadioButton) actionEvent.getSource()).getText().equals("Standard")) {
             Scientific.setSelected(false);
-            scientific_item.setSelected(false);
             standard_item.setSelected(true);
+            scientific_item.setSelected(false);
             DeSelect();
         }
 

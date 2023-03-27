@@ -2,15 +2,23 @@ package com.pjotr.calculator;
 import java.util.ArrayList;
 
 public class CalculatorOperation {
+    /** @sign is een variabele die gebruikt wordt om te kijken of het getal positief of negatief is. */
+    /** @finalSign is een variabele die gebruikt wordt om te kijken of het getal positief of negatief is. */
     int sign, finalSign;
     Double FinalValue = 0.0;
     ArrayList<Double> Memory = new ArrayList<>();
     ArrayList<Integer> divisionOperator = new ArrayList<>();
     ArrayList<Integer> multiplicationOperator = new ArrayList<>();
     ArrayList<Integer> powerOperator = new ArrayList<>();
+    /** @tem tem is een string variable die temporary getalen opslaat. */
     String tem = "";
+    /** @system system is een is een variabele die gebruikt wordt voor trigonometry */
     char system;
 
+    /** @Operation is een methode die de string van de console in een arraylist zet.
+     * @param ConsoleValue is de string die de console inleest.
+     * @return void
+     */
     public void Operation(String ConsoleValue) {
         Memory.clear();
         divisionOperator.clear();
@@ -21,62 +29,82 @@ public class CalculatorOperation {
         finalSign = 1;
         FinalValue = 0.0;
         ConsoleValue = ConsoleValue + "+";
+        //for loop die de string in een arraylist zet
         for (int i = 0; i < ConsoleValue.length(); i++) {
+            //als het getal een cijfer is of een punt of een E dan wordt het getal in de tem variable gezet.
             if ((Character.isDigit(ConsoleValue.charAt(i)) || ConsoleValue.charAt(i) == '.') || ConsoleValue.charAt(i) == 'E') {
                 tem = String.format("%s%s", tem, ConsoleValue.charAt(i));
+                //als het getal een E is dan wordt er gekeken of het een positief of negatief getal is.
                 if (ConsoleValue.charAt(i) == 'E' && ConsoleValue.charAt(i + 1) == '-') {
                     tem = String.format("%s%s", tem, '-');
                     tem = String.format("%s%s", tem, ConsoleValue.charAt(i + 2));
                     i = i + 2;
                 }
+                //als tem.length() 1 is dan wordt de finalSign variable gezet.
                 if (tem.length() == 1)
                     finalSign = sign;
             }
+            //als het getal een ! is dan wordt de factorial methode aangeroepen.
             if (ConsoleValue.charAt(i) == '!') {
                 tem = String.valueOf(factorial(Long.parseLong(tem)));
             }
+            //als het getal een e is dan wordt het getal vervangen door de waarde van het euler getal.
             if (ConsoleValue.charAt(i) == 'e')
                 tem = String.valueOf(Math.E);
+            //als het getal een π is dan wordt het getal vervangen door de waarde van het pi getal.
             if (ConsoleValue.charAt(i) == 'π')
                 tem = String.valueOf(Math.PI);
+            //als het getal een S is dan wordt de sinus methode aangeroepen.
             if (ConsoleValue.charAt(i) == 'S') {
                 i = function(i, 'S', ConsoleValue);
             }
+            //als het getal een C is dan wordt de cosinus methode aangeroepen.
             if (ConsoleValue.charAt(i) == 'C') {
                 i = function(i, 'C', ConsoleValue);
             }
+            //als het getal een T is dan wordt de tangens methode aangeroepen.
             if (ConsoleValue.charAt(i) == 'T') {
                 i = function(i, 'T', ConsoleValue);
             }
+            //als het getal een l is dan wordt de log methode aangeroepen.
             if (ConsoleValue.charAt(i) == 'l') {
                 i = function(i, 'l', ConsoleValue);
             }
+            //als het getal een L is dan wordt de log inverse methode aangeroepen.
             if (ConsoleValue.charAt(i) == 'L') {
                 i = function(i, 'L', ConsoleValue);
             }
+            //als het getal een s is dan wordt de arctangens methode aangeroepen.
             if (ConsoleValue.charAt(i) == 's') {
                 i = function(i, 's', ConsoleValue);
             }
+            //als het getal een c is dan wordt de arccosinus methode aangeroepen.
             if (ConsoleValue.charAt(i) == 'c') {
                 i = function(i, 'c', ConsoleValue);
             }
+            //als het getal een t is dan wordt de arcsinus methode aangeroepen.
             if (ConsoleValue.charAt(i) == 't') {
                 i = function(i, 't', ConsoleValue);
             }
+            //als het getal een r is dan wordt de wortel methode aangeroepen.
             if (ConsoleValue.charAt(i) == 'r') {
                 i = function(i, 'r', ConsoleValue);
             }
+            //als het getal een - is dan wordt de sign variable gezet. Dan is het een negatief getal.
             if (ConsoleValue.charAt(i) == '-') {
                 sign = (-1);
             }
+            //als het getal een + is dan wordt de sign variable gezet. Dan is het een positief getal.
             if (ConsoleValue.charAt(i) == '+')
                 sign = 1;
+            //als het getal een - of een + is dan wordt de tem variable in de arraylist gezet.
             if (ConsoleValue.charAt(i) == '-' || ConsoleValue.charAt(i) == '+') {
                 if (!tem.equals("")) {
                     Memory.add(Double.parseDouble(tem) * finalSign);
                     tem = "";
                 }
             }
+            //als het getal een / is dan wordt de tem variable in de arraylist gezet en wordt de divisionOperator arraylist aangevuld.
             if (ConsoleValue.charAt(i) == '/') {
                 sign = 1;
                 if (!tem.equals("")) {
@@ -85,6 +113,7 @@ public class CalculatorOperation {
                 }
                 divisionOperator.add(Memory.size() - 1);
             }
+            //als het getal een * is dan wordt de tem variable in de arraylist gezet en wordt de multiplicationOperator arraylist aangevuld.
             if (ConsoleValue.charAt(i) == '*') {
                 sign = 1;
                 if (!tem.equals("")) {
@@ -93,6 +122,7 @@ public class CalculatorOperation {
                 }
                 multiplicationOperator.add(Memory.size() - 1);
             }
+            //als het getal een ^ is dan wordt de tem variable in de arraylist gezet en wordt de powerOperator arraylist aangevuld.
             if (ConsoleValue.charAt(i) == '^') {
                 sign = 1;
                 if (!tem.equals("")) {
@@ -104,6 +134,12 @@ public class CalculatorOperation {
         }
     }
 
+    /**
+     * @power
+     * Deze methode zorgt ervoor dat de ^ operator wordt uitgevoerd.
+     * Dan krijg je het getal dat je hebt ingevoerd tot de macht van het getal dat je hebt ingevoerd.
+     * @return the factorial of the number.
+     */
     public void power() {
         for (int j = 0; j < powerOperator.size(); j++) {
             Memory.set(powerOperator.get(j), Math.pow(Memory.get(powerOperator.get(j)), (Memory.get(powerOperator.get(j) + 1))));
@@ -114,7 +150,11 @@ public class CalculatorOperation {
         }
     }
 
-    //for division
+    /**
+     * @division
+     * Deze methode berekent het gedeelde getal.
+     * @return het gedeelde nummer.
+     */
     public void division() {
         for (int i = 0; i < divisionOperator.size(); i++) {
             Memory.set(divisionOperator.get(i), Memory.get(divisionOperator.get(i)) / Memory.get(divisionOperator.get(i) + 1));
@@ -124,7 +164,11 @@ public class CalculatorOperation {
         }
     }
 
-    //for multiplication
+    /**
+     * @multiplication
+     * Deze methode berekent het vermenigvuldigde getal.
+     * @return het vermenigvuldigde nummer.
+     */
     public void multiplication() {
         for (int j = 0; j < multiplicationOperator.size(); j++) {
             Memory.set(multiplicationOperator.get(j), Memory.get(multiplicationOperator.get(j)) * Memory.get(multiplicationOperator.get(j) + 1));
@@ -133,11 +177,20 @@ public class CalculatorOperation {
         }
     }
 
-    // voor optellen en aftrekken
+    /**
+     * @addition
+     * Deze methode berekent het opgetelde getal of afgetrokken getal.
+     * @return het opgetelde nummer.
+     */
     public void AdditionAndSubtraction() {
         for (Double aDouble : Memory) FinalValue = FinalValue + aDouble;
     }
 
+    /**
+     * @sizeReducer Deze methode zorgt ervoor dat de arraylist wordt aangepast als er een operator wordt uitgevoerd.
+     * @param memoryList1 de arraylist die wordt aangepast, memoryList2 de arraylist die wordt gebruikt om de memoryList1 aan te passen,
+     * int a de index van de arraylist die wordt gebruikt om de memoryList1 aan te passen.
+     */
     public ArrayList<Integer> sizeReducer(ArrayList<Integer> memoryList1, ArrayList<Integer> memoryList2, int a) {
         for (int b = 0; b < memoryList1.size(); b++) {
             if ((memoryList2.get(a)) < memoryList1.get(b))
@@ -146,12 +199,20 @@ public class CalculatorOperation {
         return memoryList1;
     }
 
-    //For maths function
+    /**
+     * @function Dit is de functie die de functies aanroept
+     * @param i     de index van de character in de string
+     * @param type  het type functie
+     * @param Data  de string
+     * @return      de index van de character in de string
+     */
     public int function(int i, char type, String Data) {
         i = i + 1;
         tem = "";
         finalSign = sign;
+        //terwijl de applicatie draait wordt de tem variable gevuld met de getallen die er achter de functie staan.
         while (true) {
+            //als de character een getal is dan wordt de tem variable gevuld met de getallen die er achter de functie staan.
             if (Character.isDigit(Data.charAt(i)) || Data.charAt(i) == '.' || Data.charAt(i) == 'E' || tem.equals("")) {
                 if (Data.charAt(i) == 'E' && Data.charAt(i + 1) == '-') {
                     tem = tem + "E" + "-";
@@ -161,7 +222,7 @@ public class CalculatorOperation {
                     i = i + 1;
                 }
             } else {
-                if (system == 'R') { //Trigonometrical and Inverse Trigonometrical functions
+                if (system == 'R') { //Trigonometrie in radialen functies
                     if (type == 'S')
                         tem = String.valueOf(Math.sin(Double.parseDouble(tem)));
                     if (type == 'C')
@@ -175,7 +236,7 @@ public class CalculatorOperation {
                     if (type == 't')
                         tem = String.valueOf(Math.atan(Double.parseDouble(tem)));
                 }
-                if (system == 'D') {
+                if (system == 'D') {// Trigonometrie in graden functies
                     if (type == 'S')
                         tem = String.valueOf(Math.sin(Math.toRadians(Double.parseDouble(tem))));
                     if (type == 'C')
@@ -209,7 +270,11 @@ public class CalculatorOperation {
         return i;
     }
 
-    // for  finding factorial
+    /**
+     * @factorial
+     * Deze methode berekent het faculteit van een getal.
+     * @return het faculteit van een getal.
+     */
     public double factorial(double n) {
         double f = 1;
         for (int i = 1; i <= n; i++)
