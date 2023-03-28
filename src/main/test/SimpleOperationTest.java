@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.mockito.junit.MockitoJUnit;
 public class SimpleOperationTest {
     @Test
-    public void AdditionAndSubtraction() {
+    public void TestAdditionAndSubtraction() {
         CalculatorOperation operation = new CalculatorOperation();
     }
 }
