@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-    static CheckMenuItem select_menu = new CheckMenuItem();
     ArrayList<String> arrayList = new ArrayList<>();
     String expression, number=" ";
     char type = 'D';
@@ -23,8 +22,6 @@ public class Controller implements Initializable {
     @FXML
     TextField box;
     int x = 0;
-    @FXML
-    CheckMenuItem len;
     @FXML
     RadioMenuItem scientific_item,standard_item;
     @FXML
@@ -233,6 +230,10 @@ public class Controller implements Initializable {
         scientific_item = new RadioMenuItem("Scientific");
         scientific_item.setSelected(false);
     }
+    /**
+     * @Enable Dit is een methode die de radio buttons activeert en de radio items activeert.
+     * @param actionEvent
+     */
     @FXML
     protected void Enable(ActionEvent actionEvent) {
         number = " ";
@@ -251,6 +252,9 @@ public class Controller implements Initializable {
         }
 
     }
+    /**
+     * @Select Dit is een methode die de geavanceerde radio buttons activeert.
+     */
     void Select(){
         sin.setDisable(false);
         cos.setDisable(false);
@@ -262,6 +266,9 @@ public class Controller implements Initializable {
         Inverse.setDisable(false);
         e.setDisable(false);
     }
+    /**
+     * @DeSelect Dit is een methode die de geavanceerde radio buttons deactiveert.
+     */
     void DeSelect(){
         sin.setDisable(true);
         cos.setDisable(true);
@@ -273,6 +280,10 @@ public class Controller implements Initializable {
         Inverse.setDisable(true);
         e.setDisable(true);
     }
+    /**
+     * @measureSystem Dit is een methode die bekijkt welk meet systeem je gebruikt.
+     * @param actionEvent
+     */
     @FXML
     protected void measureSystem(ActionEvent actionEvent) {
         if (((RadioButton) actionEvent.getSource()).getText().equals("Degree")) {
@@ -284,50 +295,64 @@ public class Controller implements Initializable {
             Degree.setSelected(false);
         }
     }
-
-    @FXML
-    protected void Menu_items(ActionEvent actionEvent) {
-        RadioMenuItem radioMenuItem = (RadioMenuItem) actionEvent.getSource();
-        if (radioMenuItem.getText().equals("Conversion")) {
-            if(radioMenuItem.isSelected())
-            Main.stage.setWidth(985 + 65);
-            else Main.stage.setWidth(545 + 15);
-        }
-        if (radioMenuItem.getText().equals("Scientific"))
-        {
-            if(radioMenuItem.isSelected())
-            {
-                standard_item.setSelected(false);
-                Standard.setSelected(false);
-                Scientific.setSelected(true);
-                Select();
-            }
-            else {
-                standard_item.setSelected(true);
-                Standard.setSelected(true);
-                Scientific.setSelected(false);
-                DeSelect();
-            }
-        }
-        if (radioMenuItem.getText().equals("Standard")){
-            if(radioMenuItem.isSelected())
-            {
-                Scientific.setSelected(false);
-                Standard.setSelected(true);
-                scientific_item.setSelected(false);
-                DeSelect();
-            }
-            else {
-                scientific_item.setSelected(true);
-                Standard.setSelected(false);
-                Scientific.setSelected(true);
-                Select();
-            }
-        }
-    }
-
-    @Override
+    /**
+     * @initialize Dit is een methode die de calculator initialiseerd, om zo null errors te voorkomen.
+     * Het zorgt er ook voor dat je de calculator kan gebruiken met de toetsenbord. Alleen dit is heel erg limited.
+     * @param url
+     * @param resourceBundle
+     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        select_menu = len;
+        box.setOnKeyPressed(event -> {
+            String key = event.getText();
+            if (key.equals("")) {
+                if (!box.getText().isEmpty()) {
+                    try {
+                        cut();
+                    } catch (Exception e) {
+                        answer.setText("Error");
+                    }
+                }
+            }
+            //Hier wordt gecheckt of de key wordt ingevuld, als dat zo is dan wordt de key toegevoegd aan de arraylist en de box.
+            else if (!key.isEmpty() && Character.isDigit(key.charAt(0)) || key.equals("e") || key.equals("π")) {
+                number += key;
+                box.setText(box.getText() + key);
+                arrayList.add(key);
+            }
+            //Hier wordt gecheckt of de key een punt is en of de number al een punt heeft, als dat zo is dan wordt de key toegevoegd aan de arraylist en de box.
+            else if (key.equals(".") && !number.contains(".")) {
+                number += key;
+                box.setText(box.getText() + key);
+                arrayList.add(key);
+            }
+            //anders als key gelijk is aan enter
+            else if (key.equals("\r")) {
+                if (!box.getText().isEmpty()) {
+                    try {
+                        Evaluate();
+                    } catch (Exception e) {
+                        answer.setText("Error");
+                    }
+                }
+            }
+        });
+        //Hier wordt gecheckt of de box wordt geclicked, als dat zo is dan wordt de box leeggemaakt en de answer ook.
+        box.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+                box.setText("");
+                answer.setText("");
+                arrayList.clear();
+                number = " ";
+            }
+        });
+        //Hier wordt gecheckt of de operator key wordt ingevuld, als dat zo is dan wordt de key toegevoegd aan de arraylist en de box.
+        box.setOnKeyTyped(event -> {
+            String key = event.getCharacter();
+            if (key.equals("+") || key.equals("-") || key.equals("*") || key.equals("/") || key.equals("^")) {
+                arrayList.add(key);
+                box.setText(box.getText() + key);
+                number = " ";
+            }
+        });
     }
 }
