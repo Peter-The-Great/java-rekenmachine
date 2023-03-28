@@ -223,47 +223,32 @@ public class CalculatorOperation {
                 }
             } else {
                 if (system == 'R') { //Trigonometrie in radialen functies
-                    if (type == 'S')
-                        tem = String.valueOf(Math.sin(Double.parseDouble(tem)));
-                    if (type == 'C')
-                        tem = String.valueOf(Math.cos(Double.parseDouble(tem)));
-                    if (type == 'T')
-                        tem = String.valueOf(Math.tan(Double.parseDouble(tem)));
-                    if (type == 's')
-                        tem = String.valueOf(Math.asin(Double.parseDouble(tem)));
-                    if (type == 'c')
-                        tem = String.valueOf(Math.acos(Double.parseDouble(tem)));
-                    if (type == 't')
-                        tem = String.valueOf(Math.atan(Double.parseDouble(tem)));
+                    if (type == 'S') tem = String.valueOf(Math.sin(Double.parseDouble(tem)));
+                    if (type == 'C') tem = String.valueOf(Math.cos(Double.parseDouble(tem)));
+                    if (type == 'T') tem = String.valueOf(Math.tan(Double.parseDouble(tem)));
+                    if (type == 's') tem = String.valueOf(Math.asin(Double.parseDouble(tem)));
+                    if (type == 'c') tem = String.valueOf(Math.acos(Double.parseDouble(tem)));
+                    if (type == 't') tem = String.valueOf(Math.atan(Double.parseDouble(tem)));
                 }
                 if (system == 'D') {// Trigonometrie in graden functies
-                    if (type == 'S')
-                        tem = String.valueOf(Math.sin(Math.toRadians(Double.parseDouble(tem))));
-                    if (type == 'C')
-                        tem = String.valueOf(Math.cos(Math.toRadians(Double.parseDouble(tem))));
+                    if (type == 'S') tem = String.valueOf(Math.sin(Math.toRadians(Double.parseDouble(tem))));
+                    if (type == 'C') tem = String.valueOf(Math.cos(Math.toRadians(Double.parseDouble(tem))));
                     if (type == 'T') {
-                        if (!tem.equals("90.0"))
-                            tem = String.valueOf(Math.tan(Math.toRadians(Double.parseDouble(tem))));
+                        if (!tem.equals("90.0")) tem = String.valueOf(Math.tan(Math.toRadians(Double.parseDouble(tem))));
                         else tem = "Infinity";
                     }
-                    if (type == 's')
-                        tem = String.valueOf(Math.toDegrees(Math.asin(Double.parseDouble(tem))));
-                    if (type == 'c')
-                        tem = String.valueOf(Math.toDegrees(Math.acos(Double.parseDouble(tem))));
+                    if (type == 's') tem = String.valueOf(Math.toDegrees(Math.asin(Double.parseDouble(tem))));
+                    if (type == 'c') tem = String.valueOf(Math.toDegrees(Math.acos(Double.parseDouble(tem))));
                     if (type == 't') {
-                        if (!tem.equals("90.0"))
-                            tem = String.valueOf(Math.toDegrees(Math.atan(Double.parseDouble(tem))));
+                        if (!tem.equals("90.0")) tem = String.valueOf(Math.toDegrees(Math.atan(Double.parseDouble(tem))));
                         else tem = "Infinity";
                     }
                 }
                 //log and inverse log
-                if (type == 'l')
-                    tem = String.valueOf(Math.log(Double.parseDouble(tem)));
-                if (type == 'L')
-                    tem = String.valueOf(Math.log10(Double.parseDouble(tem)));
+                if (type == 'l') tem = String.valueOf(Math.log(Double.parseDouble(tem)));
+                if (type == 'L') tem = String.valueOf(Math.log10(Double.parseDouble(tem)));
                 //for root function
-                if (type == 'r')
-                    tem = String.valueOf(Math.sqrt(Double.parseDouble(tem)));
+                if (type == 'r') tem = String.valueOf(Math.sqrt(Double.parseDouble(tem)));
                 break;
             }
         }
