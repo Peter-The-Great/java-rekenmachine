@@ -5,22 +5,27 @@ public class CalculatorOperation extends MathUtils {
     /** @sign is een variabele die gebruikt wordt om te kijken of het getal positief of negatief is. */
     /** @finalSign is een variabele die gebruikt wordt om te kijken of het getal positief of negatief is. */
     int sign, finalSign;
-    Double FinalValue = 0.0;
+    public Double FinalValue = 0.0;
     ArrayList<Double> Memory = new ArrayList<>();
     ArrayList<Integer> divisionOperator = new ArrayList<>();
     ArrayList<Integer> multiplicationOperator = new ArrayList<>();
     ArrayList<Integer> powerOperator = new ArrayList<>();
     /** @tem tem is een string variable die temporary getalen opslaat. */
     String tem = "";
+
+    /** @testvalue is een variabele die gebruikt wordt om tests uit te voeren. */
+    Double testvalue = 0.0;
+
     /** @system system is een is een variabele die gebruikt wordt voor trigonometry */
     char system;
 
-    /** @Operation is een methode die de string van de console in een arraylist zet.
-     * Deze functie maakt gebruik van reverse polish notation. Om zo makkelijk de berekening te kunnen uitvoeren via een for loop.
+    /**
      * @param ConsoleValue is de string die de console inleest.
      * @return void
+     * @Operation is een methode die de string van de console in een arraylist zet.
+     * Deze functie maakt gebruik van reverse polish notation. Om zo makkelijk de berekening te kunnen uitvoeren via een for loop.
      */
-    public void Operation(String ConsoleValue) {
+    public Double Operation(String ConsoleValue) {
         Memory.clear();
         divisionOperator.clear();
         multiplicationOperator.clear();
@@ -131,8 +136,69 @@ public class CalculatorOperation extends MathUtils {
                     tem = "";
                 }
                 powerOperator.add(Memory.size() - 1);
+                testvalue = Memory.get(0);
             }
         }
+        return testvalue;
+    }
+    /**
+     * @power
+     * Deze methode zorgt ervoor dat de ^ operator wordt uitgevoerd.
+     * Dan krijg je het getal dat je hebt ingevoerd tot de macht van het getal dat je hebt ingevoerd.
+     * @return the factorial of the number.
+     */
+    public Double power() {
+        for (int j = 0; j < powerOperator.size(); j++) {
+            Memory.set(powerOperator.get(j), Math.pow(Memory.get(powerOperator.get(j)), (Memory.get(powerOperator.get(j) + 1))));
+            Memory.remove(powerOperator.get(j) + 1);
+            powerOperator = sizeReducer(powerOperator, powerOperator, j);
+            divisionOperator = sizeReducer(divisionOperator, powerOperator, j);
+            multiplicationOperator = sizeReducer(multiplicationOperator, powerOperator, j);
+        }
+        testvalue = Memory.get(0);
+        return testvalue;
+    }
+
+    /**
+     * @division
+     * Deze methode berekent het gedeelde getal.
+     * @return het gedeelde nummer.
+     */
+    public Double division() {
+        for (int i = 0; i < divisionOperator.size(); i++) {
+            Memory.set(divisionOperator.get(i), Memory.get(divisionOperator.get(i)) / Memory.get(divisionOperator.get(i) + 1));
+            Memory.remove(divisionOperator.get(i) + 1);
+            divisionOperator = sizeReducer(divisionOperator, divisionOperator, i);
+            multiplicationOperator = sizeReducer(multiplicationOperator, divisionOperator, i);
+        }
+        testvalue = Memory.get(0);
+        return testvalue;
+    }
+
+    /**
+     * @multiplication
+     * Deze methode berekent het vermenigvuldigde getal.
+     * @return het vermenigvuldigde nummer.
+     */
+    public Double multiplication() {
+        for (int j = 0; j < multiplicationOperator.size(); j++) {
+            Memory.set(multiplicationOperator.get(j), Memory.get(multiplicationOperator.get(j)) * Memory.get(multiplicationOperator.get(j) + 1));
+            Memory.remove(multiplicationOperator.get(j) + 1);
+            multiplicationOperator = sizeReducer(multiplicationOperator, multiplicationOperator, j);
+        }
+        testvalue = Memory.get(0);
+        return testvalue;
+    }
+
+    /**
+     * @addition
+     * Deze methode berekent het opgetelde getal of afgetrokken getal.
+     * @return het opgetelde nummer.
+     */
+    public Double AdditionAndSubtraction() {
+        for (Double aDouble : Memory) FinalValue = FinalValue + aDouble;
+        testvalue = FinalValue;
+        return testvalue;
     }
 
     /**

@@ -41,7 +41,7 @@
     -fx-border-color:#0bade0;
     -fx-background-insets:0;
 }
-.check-menu-item:checked{
+.check-menu-item:selected{
     -fx-background-color:#0bade0;
 }
 .check-menu-item:focused{

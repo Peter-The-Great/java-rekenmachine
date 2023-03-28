@@ -3,55 +3,6 @@ package com.pjotr.calculator;
 import java.util.ArrayList;
 
 public class MathUtils {
-    /**
-     * @multiplication
-     * Deze methode berekent het vermenigvuldigde getal.
-     * @return het vermenigvuldigde nummer.
-     */
-    public void multiplication(ArrayList<Integer> multiplicationOperator, ArrayList<Double> Memory) {
-        for (int j = 0; j < multiplicationOperator.size(); j++) {
-            Memory.set(multiplicationOperator.get(j), Memory.get(multiplicationOperator.get(j)) * Memory.get(multiplicationOperator.get(j) + 1));
-            Memory.remove(multiplicationOperator.get(j) + 1);
-            multiplicationOperator = sizeReducer(multiplicationOperator, multiplicationOperator, j);
-        }
-    }
-    /**
-     * @division
-     * Deze methode berekent het gedeelde getal.
-     * @return het gedeelde nummer.
-     */
-    public void division(ArrayList<Integer> divisionOperator, ArrayList<Integer> multiplicationOperator, ArrayList<Double> Memory) {
-        for (int i = 0; i < divisionOperator.size(); i++) {
-            Memory.set(divisionOperator.get(i), Memory.get(divisionOperator.get(i)) / Memory.get(divisionOperator.get(i) + 1));
-            Memory.remove(divisionOperator.get(i) + 1);
-            divisionOperator = sizeReducer(divisionOperator, divisionOperator, i);
-            multiplicationOperator = sizeReducer(multiplicationOperator, divisionOperator, i);
-        }
-    }
-    /**
-     * @power
-     * Deze methode zorgt ervoor dat de ^ operator wordt uitgevoerd.
-     * Dan krijg je het getal dat je hebt ingevoerd tot de macht van het getal dat je hebt ingevoerd.
-     * @return the factorial of the number.
-     */
-    public void power(ArrayList<Integer> powerOperator, ArrayList<Integer> divisionOperator, ArrayList<Integer> multiplicationOperator, ArrayList<Double> Memory) {
-        for (int j = 0; j < powerOperator.size(); j++) {
-            Memory.set(powerOperator.get(j), Math.pow(Memory.get(powerOperator.get(j)), (Memory.get(powerOperator.get(j) + 1))));
-            Memory.remove(powerOperator.get(j) + 1);
-            powerOperator = sizeReducer(powerOperator, powerOperator, j);
-            divisionOperator = sizeReducer(divisionOperator, powerOperator, j);
-            multiplicationOperator = sizeReducer(multiplicationOperator, powerOperator, j);
-        }
-    }
-
-    /**
-     * @addition
-     * Deze methode berekent het opgetelde getal of afgetrokken getal.
-     * @return het opgetelde nummer.
-     */
-    public void AdditionAndSubtraction(ArrayList<Double> Memory, Double FinalValue) {
-        for (Double aDouble : Memory) FinalValue = FinalValue + aDouble;
-    }
 
     /**
      * @factorial

@@ -19,11 +19,22 @@ public class Controller implements Initializable {
     Button sin, tan, cos, fact, pi, ln, Inverse, e, log, equal;
     @FXML
     RadioButton Scientific, Standard, Degree, Radian;
+    /** @box Een textfield dat de te */
     @FXML
     TextField box;
+    /** @x Een variabele die de grootte van de arraylist bijhoudt. */
     int x = 0;
+    /**
+     * @scientific_item De wetenschappelijke modus van de rekenmachine
+     * @standard_item De standaard modus van de rekenmachine.
+     * @param resourceBundle
+     */
     @FXML
     RadioMenuItem scientific_item,standard_item;
+    /**
+     * @numbers Deze methode zorgt ervoor dat de cijfers en de punten in de textfield komen te staan.
+     * @param actionEvent
+     */
     @FXML
     public void numbers(ActionEvent actionEvent) {
         Button button = (Button) actionEvent.getSource();
@@ -39,6 +50,10 @@ public class Controller implements Initializable {
         }
         expression = box.getText();
     }
+
+    /**
+     * @power Deze methode zorgt ervoor dat de exponenten in de textfield komen te staan.
+     */
     @FXML
     protected void power(){
         if (!number.equals(" ")){
@@ -48,6 +63,11 @@ public class Controller implements Initializable {
         }
 
     }
+
+    /**
+     * @Operator Deze methode zorgt ervoor dat de operators in de textfield komen te staan.
+     * @param actionEvent
+     */
     @FXML
     protected void Operator(ActionEvent actionEvent) {
         Button button = (Button) actionEvent.getSource();
@@ -72,6 +92,10 @@ public class Controller implements Initializable {
         number = " ";
     }
 
+    /**
+     * @brackets Deze methode zorgt ervoor dat de haakjes in de textfield komen te staan.
+     * @param actionEvent
+     */
     @FXML
     protected void brackets(ActionEvent actionEvent) {
         Button button = (Button) actionEvent.getSource();
@@ -81,6 +105,9 @@ public class Controller implements Initializable {
         number = " ";
     }
 
+    /**
+     * @Evaluate Deze methode zorgt ervoor dat de rekenmachine de antwoorden berekent.
+     */
     @FXML
     protected void Evaluate() {
         if (!box.getText().equals("")) {
@@ -95,6 +122,9 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     * @clear Deze methode zorgt ervoor dat de rekenmachine leeg wordt gemaakt.
+     */
     @FXML
     protected void clear() {
         expression = "";
@@ -105,6 +135,9 @@ public class Controller implements Initializable {
         number = " ";
     }
 
+    /**
+     * @MathFunction Deze methode zorgt ervoor dat de wiskundige functies in de textfield komen te staan.
+     */
     @FXML
     protected void MathFunction(ActionEvent actionEvent) {
         Button button = (Button) actionEvent.getSource();
@@ -170,6 +203,10 @@ public class Controller implements Initializable {
         }
         number = " ";
     }
+
+    /**
+     * @rational Deze methode zorgt ervoor dat de breuken in de textfield komen te staan.
+     */
     @FXML
     public void rational(){
         if (!answer.getText().isEmpty()){
@@ -177,6 +214,10 @@ public class Controller implements Initializable {
             answer.setText(rational.P_by_QForm());
         }
     }
+
+    /**
+     * @showPopUp Deze methode zorgt ervoor dat de popup wordt getoond.
+     */
      @FXML
      public void showPopUp(){
          Popup popup=new Popup();
@@ -189,6 +230,10 @@ public class Controller implements Initializable {
              popup.show(Main.stage);
          }
      }
+
+    /**
+     * @cut Deze methode zorgt ervoor dat de laatste ingevoerde waarde wordt verwijderd.
+     */
     @FXML
     protected void cut() {
         if (arrayList.size() != 0) {
@@ -199,6 +244,10 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     * @InverseFunction Deze methode zorgt ervoor dat de inverse functies in de textfield komen te staan.
+     * @param actionEvent
+     */
     @FXML
     protected void InverseFunction(ActionEvent actionEvent) {
         Button button = (Button) actionEvent.getSource();
@@ -297,7 +346,7 @@ public class Controller implements Initializable {
     }
     /**
      * @initialize Dit is een methode die de calculator initialiseerd, om zo null errors te voorkomen.
-     * Het zorgt er ook voor dat je de calculator kan gebruiken met de toetsenbord. Alleen dit is heel erg limited.
+     * Het zorgt er ook voor dat je de calculator kan gebruiken met het toetsenbord. Alleen dit is heel erg limited.
      * @param url
      * @param resourceBundle
      */

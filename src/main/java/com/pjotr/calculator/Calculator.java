@@ -42,15 +42,15 @@ public class Calculator extends Formating {
             Operation(ConsoleValue.substring(start + 1, end));
             //als de start niet gelijk is aan 0 en de character op de positie start-1 een cijfer is, dan wordt er een * toegevoegd.
             if (start != 0 && Character.isDigit(ConsoleValue.charAt(start - 1))) ConsoleValue = ConsoleValue.replace(x, "*" + findAnswers());
-            //anders als de start niet gelijk is aan 0 en de character op de positie start-1 een - is, dan wordt er een * toegevoegd.
+            //anders als de start niet gelijk is aan 0 en de character op de positie start -1 een - is, dan wordt er een * toegevoegd.
             else if (start != 0 && ConsoleValue.charAt(start - 1) == '-') {
                 String y = ConsoleValue.substring(start - 1, end + 1);
                 ConsoleValue = ConsoleValue.replace(y, -1 + "*" + findAnswers());
             }
-            //anders als de start niet gelijk is aan 0 en de character op de positie start-1 een * is, dan wordt er een * toegevoegd.
+            //anders als de start niet gelijk is aan 0 en de character op de positie start -1 een * is, dan wordt er een * toegevoegd.
             else if (start != 0 && ConsoleValue.charAt(start - 1) == '*') ConsoleValue = ConsoleValue.replace(x, String.valueOf(findAnswers()));
 
-            //anders als de start niet gelijk is aan 0 en de character op de positie start-1 een / is, dan wordt er een * toegevoegd.
+            //anders als de start niet gelijk is aan 0 en de character op de positie start-1 een / is, dan moet
             else ConsoleValue = ConsoleValue.replace(x, String.valueOf(findAnswers())); System.out.println(ConsoleValue);
         }
         Operation(ConsoleValue);
@@ -60,10 +60,10 @@ public class Calculator extends Formating {
      * @findAnswers Deze methode berekent de uitkomst van de berekening. Het vindt de uitkomst van de berekening door de volgorde van de berekeningen te volgen.
      */
     public Double findAnswers() {
-        power(powerOperator, divisionOperator, multiplicationOperator, Memory );
-        division(divisionOperator, multiplicationOperator, Memory);
-        multiplication(multiplicationOperator, Memory);
-        AdditionAndSubtraction(Memory, FinalValue);
+        power();
+        division();
+        multiplication();
+        AdditionAndSubtraction();
         return FinalValue;
     }
 
