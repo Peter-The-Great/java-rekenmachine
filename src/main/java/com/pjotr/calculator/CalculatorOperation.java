@@ -56,58 +56,46 @@ public class CalculatorOperation extends MathUtils {
                     finalSign = sign;
             }
             //als het getal een ! is dan wordt de factorial methode aangeroepen.
-            if (ConsoleValue.charAt(i) == '!') {
-                tem = String.valueOf(factorial(Long.parseLong(tem)));
-            }
+            if (ConsoleValue.charAt(i) == '!') tem = String.valueOf(factorial(Long.parseLong(tem)));
+
             //als het getal een e is dan wordt het getal vervangen door de waarde van het euler getal.
-            if (ConsoleValue.charAt(i) == 'e')
-                tem = String.valueOf(Math.E);
+            if (ConsoleValue.charAt(i) == 'e') tem = String.valueOf(Math.E);
+
             //als het getal een π is dan wordt het getal vervangen door de waarde van het pi getal.
-            if (ConsoleValue.charAt(i) == 'π')
-                tem = String.valueOf(Math.PI);
+            if (ConsoleValue.charAt(i) == 'π') tem = String.valueOf(Math.PI);
+
             //als het getal een S is dan wordt de sinus methode aangeroepen.
-            if (ConsoleValue.charAt(i) == 'S') {
-                i = function(i, 'S', ConsoleValue);
-            }
+            if (ConsoleValue.charAt(i) == 'S') i = function(i, 'S', ConsoleValue);
+
             //als het getal een C is dan wordt de cosinus methode aangeroepen.
-            if (ConsoleValue.charAt(i) == 'C') {
-                i = function(i, 'C', ConsoleValue);
-            }
+            if (ConsoleValue.charAt(i) == 'C') i = function(i, 'C', ConsoleValue);
+
             //als het getal een T is dan wordt de tangens methode aangeroepen.
-            if (ConsoleValue.charAt(i) == 'T') {
-                i = function(i, 'T', ConsoleValue);
-            }
+            if (ConsoleValue.charAt(i) == 'T') i = function(i, 'T', ConsoleValue);
+
             //als het getal een l is dan wordt de log methode aangeroepen.
-            if (ConsoleValue.charAt(i) == 'l') {
-                i = function(i, 'l', ConsoleValue);
-            }
+            if (ConsoleValue.charAt(i) == 'l') i = function(i, 'l', ConsoleValue);
+
             //als het getal een L is dan wordt de log inverse methode aangeroepen.
-            if (ConsoleValue.charAt(i) == 'L') {
-                i = function(i, 'L', ConsoleValue);
-            }
+            if (ConsoleValue.charAt(i) == 'L') i = function(i, 'L', ConsoleValue);
+
             //als het getal een s is dan wordt de arctangens methode aangeroepen.
-            if (ConsoleValue.charAt(i) == 's') {
-                i = function(i, 's', ConsoleValue);
-            }
+            if (ConsoleValue.charAt(i) == 's') i = function(i, 's', ConsoleValue);
+
             //als het getal een c is dan wordt de arccosinus methode aangeroepen.
-            if (ConsoleValue.charAt(i) == 'c') {
-                i = function(i, 'c', ConsoleValue);
-            }
+            if (ConsoleValue.charAt(i) == 'c') i = function(i, 'c', ConsoleValue);
+
             //als het getal een t is dan wordt de arcsinus methode aangeroepen.
-            if (ConsoleValue.charAt(i) == 't') {
-                i = function(i, 't', ConsoleValue);
-            }
+            if (ConsoleValue.charAt(i) == 't') i = function(i, 't', ConsoleValue);
+
             //als het getal een r is dan wordt de wortel methode aangeroepen.
-            if (ConsoleValue.charAt(i) == 'r') {
-                i = function(i, 'r', ConsoleValue);
-            }
+            if (ConsoleValue.charAt(i) == 'r') i = function(i, 'r', ConsoleValue);
+
             //als het getal een - is dan wordt de sign variable gezet. Dan is het een negatief getal.
-            if (ConsoleValue.charAt(i) == '-') {
-                sign = (-1);
-            }
+            if (ConsoleValue.charAt(i) == '-') sign = (-1);
+
             //als het getal een + is dan wordt de sign variable gezet. Dan is het een positief getal.
-            if (ConsoleValue.charAt(i) == '+')
-                sign = 1;
+            if (ConsoleValue.charAt(i) == '+') sign = 1;
             //als het getal een - of een + is dan wordt de tem variable in de arraylist gezet.
             if (ConsoleValue.charAt(i) == '-' || ConsoleValue.charAt(i) == '+') {
                 if (!tem.equals("")) {
