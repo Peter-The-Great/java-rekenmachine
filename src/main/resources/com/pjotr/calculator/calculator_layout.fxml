@@ -226,7 +226,7 @@
    </RadioButton>
    <Label fx:id="answer" layoutX="53.0" layoutY="21.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="32.0" prefWidth="489.0">
       <font>
-         <Font name="Century" size="25.0" />
+         <Font name="Arial" size="25.0" />
       </font>
    </Label>
    <RadioButton fx:id="Degree" layoutX="7.0" layoutY="128.0" mnemonicParsing="false" onAction="#measureSystem" selected="true" text="Degree">
@@ -241,16 +241,16 @@
    </RadioButton>
    <Label fx:id="history" layoutX="91.0" layoutY="47.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="19.0" prefWidth="452.0">
       <font>
-         <Font name="Century" size="15.0" />
+         <Font name="Arial" size="15.0" />
       </font>
    </Label>
    <Label layoutX="5.0" layoutY="26.0" text="Answer">
       <font>
-         <Font name="Century" size="15.0" />
+         <Font name="Calibri" size="18.0" />
       </font></Label>
-   <Label layoutX="4.0" layoutY="47.0" text="Expression" textFill="#000000e8">
+   <Label layoutX="6.0" layoutY="46.0" text="Expression" textFill="#000000e8">
       <font>
-         <Font name="Century" size="15.0" />
+         <Font name="Calibri" size="18.0" />
       </font></Label>
    <MenuBar layoutX="-1.0" layoutY="-1.0" prefHeight="25.0" prefWidth="550.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0">
       <Menu mnemonicParsing="false" text="Help">
