@@ -9,6 +9,13 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
+/**
+ * @Main
+ * @author Pjotr
+ * @version 2.0
+ * @since 1.5
+ * Deze klasse is de main klasse van de applicatie. Deze klasse start de applicatie en laad de twee fxml bestanden in.
+ */
 public class Main extends Application {
     // Hier worden de variabelen gedeclareerd.
     // Deze variabelen zijn static, zodat ze in andere klassen kunnen worden aangeroepen.

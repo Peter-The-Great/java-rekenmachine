@@ -1,4 +1,10 @@
 package com.pjotr.calculator;
+
+/**
+ * @Calculator Deze class is de hoofd class van de rekenmachine en zorgt ervoor dat alle classes, functies en variabelen met elkaar in verbinding staan.
+ * En zo met elkaar kunnen samenwerken.
+ */
+
 public class Calculator extends Formating {
 
     /** @mem Een variabele dat de memory van de rekenmachine behoudt. */

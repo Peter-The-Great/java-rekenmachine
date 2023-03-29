@@ -9,6 +9,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * @Controller Deze class is de controller van de rekenmachine en zorgt ervoor dat alle buttons en menu's met elkaar in verbinding staan
+ * samen met de fxml GUI.
+ */
+
 public class Controller implements Initializable {
     ArrayList<String> arrayList = new ArrayList<>();
     String expression, number=" ";

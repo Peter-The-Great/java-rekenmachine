@@ -1,5 +1,8 @@
 package com.pjotr.calculator;
-
+/**
+ * @Rational
+ * Deze class zorgt ervoor dat de String omgezet wordt naar een breuk.
+ */
 public class Rational
 {
     private long a, b,pos=0,l=0;

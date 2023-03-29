@@ -1,5 +1,9 @@
 package com.pjotr.calculator;
 
+/**
+ * @Formating Deze class zorgt ervoor dat de consolevalue juist wordt geformatteerd naar de reversed polish notation.
+ * Daarnaast reorganiseert deze class de consolevalue om ze verder te verwerken in de stringbuilder.
+ */
 public class Formating extends CalculatorOperation{
     /**
      * @Reformat Deze methode zorgt ervoor dat de consolevalue goed staat.

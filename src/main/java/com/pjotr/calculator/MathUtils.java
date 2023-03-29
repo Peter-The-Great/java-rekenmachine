@@ -2,6 +2,10 @@ package com.pjotr.calculator;
 
 import java.util.ArrayList;
 
+/**
+ * @MathUtils Deze class zorgt ervoor dat de consolevalue juist wordt geformatteerd naar de reversed polish notation.
+ * Daarnaast reorganiseert deze class de consolevalue om ze verder te verwerken in de stringbuilder.
+ */
 public class MathUtils {
 
     /**

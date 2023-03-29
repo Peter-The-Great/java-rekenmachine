@@ -4,7 +4,7 @@ import java.util.ArrayList;
 /**
  * @CalculatorOperation
  * Deze methode is de main methode van de calculator. Deze methode zet de string van de console om in een arraylist.
- * Deze methode maakt gebruik van reverse polish notation. Om zo makkelijk de berekening te kunnen uitvoeren via een for loop.
+ * Het maakt gebruik van reverse polish notation. Om zo makkelijk de berekening te kunnen opslaan en uitvoeren via een for loop.
  */
 public class CalculatorOperation extends MathUtils {
     /** @sign is een variabele die gebruikt wordt om te kijken of het getal positief of negatief is. */
