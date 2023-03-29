@@ -10,7 +10,7 @@ public class Rational
      * @param String input
      */
     Rational(String input){
-        StringBuilder num=new StringBuilder();
+        StringBuilder num = new StringBuilder();
         if (!input.contains(".")) input = input + ".0";
         boolean condition = true;
         l = input.length();
