@@ -10,8 +10,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="399.0" prefWidth="614.0" style="-fx-background-color: black;" stylesheets="@calculator.css"
-            xmlns="http://javafx.com/javafx/19">
+<AnchorPane prefHeight="399.0" prefWidth="614.0" style="-fx-background-color: black;" stylesheets="@calculator.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <TextArea editable="false" layoutX="6.0" layoutY="55.0" prefHeight="330.0" prefWidth="602.0" text="Product Version&#10;Wetenschappelijke Rekenmachine 1.5.0&#10;&#10;Gemaakt door&#10;Pjotr Wisse&#10;&#10;Build Informatie&#10;Version 1.5.0&#10;Date: 2023-03-27&#10;java 19.0.1 2022-10-18&#10;Java(TM) SE Runtime Environment (build 19.0.1+10-21)&#10;Java HotSpot(TM) 64-Bit Server VM (build 19.0.1+10-21, mixed mode, sharing)&#10;&#10;Apache License 2.0&#10;Copyright (c) HHS 2023">
       <font>
          <Font size="15.0" />
@@ -25,16 +24,16 @@
          <Font name="MT Extra" size="30.0" />
       </font>
       <textFill>
-         <RadialGradient centerX="0.45555555555555555" centerY="0.7523809523809524" focusAngle="-77.01" radius="0.5232558139534884">
+         <RadialGradient centerX="0.45555555555555555" centerY="0.6576839826839826" focusAngle="-77.01" radius="0.5232558139534884">
             <stops>
                <Stop>
                   <color>
-                     <Color red="0.4066425859928131" blue="0.8799999952316284" />
+                     <Color red="0.27134501934051514" green="0.14035087823867798" blue="0.6315789222717285" />
                   </color>
                </Stop>
                <Stop offset="1.0">
                   <color>
-                     <Color red="0.04313725605607033" green="0.6784313917160034" blue="0.8784313797950745" />
+                     <Color red="0.8700000047683716" green="0.04349999874830246" blue="0.8147503137588501" />
                   </color>
                </Stop>
             </stops>
