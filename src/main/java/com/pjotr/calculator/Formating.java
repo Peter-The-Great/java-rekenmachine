@@ -17,12 +17,8 @@ public class Formating extends CalculatorOperation{
             if (co.charAt(i)=='(') c1++;
             if (co.charAt(i)==')') c2++;
         }
-        if ((c1-c2)>0){
-            co = co + ")".repeat(Math.max(0, (c1 - c2)));
-        }
-        if ((c1-c2)<0){
-            co=co.substring(0,(co.length()-(c2-c1)));
-        }
+        if ((c1-c2)>0) co = co + ")".repeat(Math.max(0, (c1 - c2)));
+        if ((c1-c2)<0) co=co.substring(0,(co.length()-(c2-c1)));
         return co;
     }
     /**

@@ -373,7 +373,7 @@ public class Controller implements Initializable {
                 box.setText(box.getText() + key);
                 arrayList.add(key);
             }
-            //Hier wordt gecheckt of de key een punt is en of de number al een punt heeft, als dat zo is dan wordt de key toegevoegd aan de arraylist en de box.
+            //Hier wordt gecheckt of de key een punt is en/of de number al een punt heeft, als dat zo is dan wordt de key toegevoegd aan de arraylist en de box.
             else if (key.equals(".") && !number.contains(".")) {
                 number += key;
                 box.setText(box.getText() + key);
