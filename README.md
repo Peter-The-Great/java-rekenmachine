@@ -44,5 +44,5 @@ Installeer het project via git met deze link. Daarna open je het project in Inte
 - [Git](https://git-scm.com)
 - [JavaFX](https://openjfx.io/)
 - [Scenebuilder](https://gluonhq.com/products/scene-builder/)
-- [JavaFX Scenebuilder](https://www.jetbrains.com/help/idea/javafx.html#scene-builder
+- [JavaFX Scenebuilder](https://www.jetbrains.com/help/idea/javafx.html#scene-builder)
 - [Github Copilot voor het leren van StringBuilder](https://copilot.github.com/)
